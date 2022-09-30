@@ -44,15 +44,15 @@
             this.txtPatente = new System.Windows.Forms.TextBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.dgvCamiones = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoCarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAcciones = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipoCarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAcciones = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCamiones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -196,6 +196,35 @@
             this.dgvCamiones.ReadOnly = true;
             this.dgvCamiones.Size = new System.Drawing.Size(463, 150);
             this.dgvCamiones.TabIndex = 16;
+            this.dgvCamiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCamiones_CellContentClick);
+            // 
+            // colId
+            // 
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
+            // 
+            // colTipoCarga
+            // 
+            this.colTipoCarga.HeaderText = "Tipo Carga";
+            this.colTipoCarga.Name = "colTipoCarga";
+            this.colTipoCarga.ReadOnly = true;
+            this.colTipoCarga.Width = 200;
+            // 
+            // colPeso
+            // 
+            this.colPeso.HeaderText = "Peso";
+            this.colPeso.Name = "colPeso";
+            this.colPeso.ReadOnly = true;
+            // 
+            // colAcciones
+            // 
+            this.colAcciones.HeaderText = "Accion";
+            this.colAcciones.Name = "colAcciones";
+            this.colAcciones.ReadOnly = true;
+            this.colAcciones.Text = "Eliminar";
+            this.colAcciones.UseColumnTextForButtonValue = true;
             // 
             // btnAgregar
             // 
@@ -240,34 +269,6 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Peso Total ";
             // 
-            // colId
-            // 
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
-            // 
-            // colTipoCarga
-            // 
-            this.colTipoCarga.HeaderText = "Tipo Carga";
-            this.colTipoCarga.Name = "colTipoCarga";
-            this.colTipoCarga.ReadOnly = true;
-            this.colTipoCarga.Width = 200;
-            // 
-            // colPeso
-            // 
-            this.colPeso.HeaderText = "Peso";
-            this.colPeso.Name = "colPeso";
-            this.colPeso.ReadOnly = true;
-            // 
-            // colAcciones
-            // 
-            this.colAcciones.HeaderText = "Accion";
-            this.colAcciones.Name = "colAcciones";
-            this.colAcciones.ReadOnly = true;
-            this.colAcciones.Text = "Eliminar";
-            this.colAcciones.UseColumnTextForButtonValue = true;
-            // 
             // AltaTransporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +297,7 @@
             this.Controls.Add(this.lblNext);
             this.Name = "AltaTransporte";
             this.Text = "AltaTransporte";
+            this.Load += new System.EventHandler(this.AltaTransporte_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCamiones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

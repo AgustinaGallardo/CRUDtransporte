@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUDtransporte.Datos.Interfaz
+namespace CRUDtransporte.Servicios.Interfaz
 {
-    internal interface IDaoCamion
+    internal interface IServicio
     {
         int ObtenerProximo();
 

@@ -1,0 +1,11 @@
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\bin\Debug\CRUDtransporte.exe.config
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\bin\Debug\CRUDtransporte.exe
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\bin\Debug\CRUDtransporte.pdb
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.csproj.AssemblyReference.cache
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.csproj.SuggestedBindingRedirects.cache
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.AltaTransporte.resources
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.Properties.Resources.resources
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.csproj.GenerateResource.cache
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.csproj.CoreCompileInputs.cache
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.exe
+C:\Users\China\Documents\SEGUNDO CUATRIMESTRE\programacion II\CRUDtransporte\obj\Debug\CRUDtransporte.pdb
