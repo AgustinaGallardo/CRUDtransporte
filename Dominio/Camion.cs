@@ -31,5 +31,34 @@ namespace CRUDtransporte.Dominio
             PesoMax = pesoMax;
             Cargas = cargas;
         }
+
+        public void AgregarCarga(Carga cargas)
+        {
+           Cargas.Add(cargas);
+        }
+
+        public int CalcularCarga()
+        {
+            int totalCarga = 0;
+            foreach (Carga dr in Cargas)
+            {
+                totalCarga++;
+            }
+            return totalCarga;
+        }
+
+        public double CalcularPesoTotal()
+        {
+            double pesoTotal = 0;
+            foreach(Carga dr in Cargas)
+            {
+                pesoTotal += dr.Peso;
+            }
+            return pesoTotal;
+        }
+        public void EliminarDetalle(int indice)
+        {
+            Cargas.RemoveAt(indice);
+        }
     }
 }

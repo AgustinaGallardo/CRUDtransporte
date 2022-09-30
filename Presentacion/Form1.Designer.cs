@@ -51,7 +51,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPesoTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCamiones)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.cboTipoCarga.FormattingEnabled = true;
             this.cboTipoCarga.Location = new System.Drawing.Point(108, 145);
             this.cboTipoCarga.Name = "cboTipoCarga";
-            this.cboTipoCarga.Size = new System.Drawing.Size(211, 21);
+            this.cboTipoCarga.Size = new System.Drawing.Size(188, 21);
             this.cboTipoCarga.TabIndex = 2;
             // 
             // label3
@@ -140,7 +140,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(334, 122);
+            this.label10.Location = new System.Drawing.Point(309, 151);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 13);
             this.label10.TabIndex = 10;
@@ -176,9 +176,9 @@
             // 
             // txtPeso
             // 
-            this.txtPeso.Location = new System.Drawing.Point(371, 119);
+            this.txtPeso.Location = new System.Drawing.Point(346, 148);
             this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(127, 20);
+            this.txtPeso.Size = new System.Drawing.Size(71, 20);
             this.txtPeso.TabIndex = 15;
             // 
             // dgvCamiones
@@ -194,7 +194,7 @@
             this.dgvCamiones.Location = new System.Drawing.Point(35, 180);
             this.dgvCamiones.Name = "dgvCamiones";
             this.dgvCamiones.ReadOnly = true;
-            this.dgvCamiones.Size = new System.Drawing.Size(463, 150);
+            this.dgvCamiones.Size = new System.Drawing.Size(477, 150);
             this.dgvCamiones.TabIndex = 16;
             this.dgvCamiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCamiones_CellContentClick);
             // 
@@ -228,12 +228,13 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(423, 148);
+            this.btnAgregar.Location = new System.Drawing.Point(437, 148);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 17;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnAceptar
             // 
@@ -243,6 +244,7 @@
             this.btnAceptar.TabIndex = 18;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnSalir
             // 
@@ -253,12 +255,12 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtPesoTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(398, 373);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 21;
+            this.txtPesoTotal.Location = new System.Drawing.Point(398, 373);
+            this.txtPesoTotal.Name = "txtPesoTotal";
+            this.txtPesoTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtPesoTotal.TabIndex = 21;
             // 
             // label1
             // 
@@ -274,7 +276,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 445);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPesoTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAceptar);
@@ -325,7 +327,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPesoTotal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoCarga;

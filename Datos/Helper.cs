@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CRUDtransporte.Dominio;
 
 namespace CRUDtransporte.Datos
 {
@@ -55,8 +56,69 @@ namespace CRUDtransporte.Datos
             return tb;
         }
 
+        public bool ConformarCamion(Camion oCamion)
+        {
+            bool ok = true;
+            SqlTransaction t = null;
+            try
+            {
+                SqlCommand cmdMaster = new SqlCommand();
+                cnn.Open();
+                t = cnn.BeginTransaction();
+                
+               
+                cmdMaster.Connection=cnn;
+                cmdMaster.Transaction=t;
+                cmdMaster.CommandType = CommandType.StoredProcedure;
+                cmdMaster.CommandText="Insert_Maestro";
 
+                cmdMaster.Parameters.AddWithValue("@patente", oCamion.Patente);
+                cmdMaster.Parameters.AddWithValue("@estado", oCamion.Estado);
+                cmdMaster.Parameters.AddWithValue("@pesoMax", oCamion.PesoMax);
 
+                SqlParameter pOutPut = new SqlParameter();
+                pOutPut.ParameterName = "@idCamion";
+                pOutPut.Direction = ParameterDirection.Output;
+                pOutPut.DbType = DbType.Int32;
 
+                cmdMaster.Parameters.Add(pOutPut);
+
+                cmdMaster.ExecuteNonQuery();
+
+                int idCamion = (int)pOutPut.Value;
+
+                foreach(Carga item in oCamion.Cargas)
+                {
+                    SqlCommand cmdDetalle = new SqlCommand();
+                    cmdDetalle.Connection = cnn;
+                    cmdDetalle.Transaction = t;
+                    cmdDetalle.CommandType = CommandType.StoredProcedure;
+                    cmdDetalle.CommandText = "Insert_detalle";
+
+                    cmdDetalle.Parameters.AddWithValue("@peso", item.Peso);
+                    cmdDetalle.Parameters.AddWithValue("@idTipo", item.Tipo.IdTipo);
+                    cmdDetalle.Parameters.AddWithValue("@idCamion", idCamion);
+
+                    cmdDetalle.ExecuteNonQuery();
+                    
+                }
+                t.Commit();
+            }
+            catch (Exception )
+            {
+                if( t != null)
+                {
+                    t.Rollback();
+                   return ok = false;
+                }
+            }
+            finally
+            {
+                if (cnn != null && cnn.State == ConnectionState.Open)
+                    cnn.Close();
+            }
+
+            return ok;
+        }
     }
 }

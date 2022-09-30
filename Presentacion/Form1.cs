@@ -1,4 +1,6 @@
 ﻿
+using CRUDtransporte.Datos;
+using CRUDtransporte.Dominio;
 using CRUDtransporte.Servicios.Implementacion;
 using CRUDtransporte.Servicios.Interfaz;
 using System;
@@ -16,12 +18,14 @@ namespace CRUDtransporte
     public partial class AltaTransporte : Form
     {
         private IServicio gestor;
+        private Camion nuevo;
         public AltaTransporte()
         {
             InitializeComponent();
             gestor = new Servicio();
             ObtenerProximo();
             ObtenerTipos();
+            nuevo = new Camion();
         }
 
         private void ObtenerTipos()
@@ -45,13 +49,75 @@ namespace CRUDtransporte
         {
             if(dgvCamiones.CurrentCell.ColumnIndex == 3)
             {
-
+                nuevo.EliminarDetalle(dgvCamiones.CurrentRow.Index);
+                dgvCamiones.Rows.Remove(dgvCamiones.CurrentRow);
+                nuevo.CalcularPesoTotal();
+                nuevo.CalcularCarga();
             }
         }
 
         private void AltaTransporte_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if(cboTipoCarga.SelectedIndex == -1)
+            {
+                MessageBox.Show("Tiene que agregar el tipo de carga", "error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+            }
+            if(txtPeso.Text == "")
+            {
+                MessageBox.Show("Tiene que agregar el tipo de carga", "error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+            }
+            foreach(DataGridViewRow item in dgvCamiones.Rows)
+            {
+                if(item.Cells["colTipoCarga"].Value.ToString().Equals(cboTipoCarga.Text))
+                {
+                    MessageBox.Show("La carga: " + cboTipoCarga.Text + " Ya esta seleecionada", "error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+                    return;
+                }                
+            }
+
+            TipoCarga tp = (TipoCarga)cboTipoCarga.SelectedItem;
+            double peso = Convert.ToDouble( txtPeso.Text);
+
+            Carga carga = new Carga(peso,tp);
+
+            nuevo.AgregarCarga(carga);
+
+            dgvCamiones.Rows.Add(carga.Tipo.IdTipo, carga.Tipo.NombreTipo, carga.Peso);
+
+            txtTotalCargas.Text = nuevo.CalcularCarga().ToString();
+            txtPesoTotal.Text = nuevo.CalcularPesoTotal().ToString();
+            
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if(txtPatente.Text == "")
+            {
+                MessageBox.Show("Tiene que agregar una patente", "error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+            }
+
+            GuardarCamion();
+        }
+
+        private void GuardarCamion()
+        {
+            nuevo.Patente = txtPatente.Text;
+            nuevo.Estado = txtEstado.Text;
+            nuevo.PesoMax = Convert.ToDouble(txtPesoMaximo.Text);
+
+            if(Helper.ObtenerInstancia().ConformarCamion(nuevo))
+            {
+                MessageBox.Show("Se inserto con exito", "EXITO", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+            }
+            else
+            {
+                MessageBox.Show("No inserto", "error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
+            }
         }
     }
 }
